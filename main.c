@@ -4,7 +4,7 @@
 #include <string.h>
 #include <math.h>
 
-#define MAX_NUM 16
+#define MAX_NUM 9
 #define NUM_CARTELA 80
 #define MAX_JOG 10
 
@@ -118,7 +118,7 @@ int main() {
                     jogadores[k].pontos = jogadores[k].pontos + 1;
                 if (jogadores[k].pontos == MAX_NUM){         //Se o jogador chegar a 9 pontos ele ganhou, mostra nome e cartela do vencedor
                     ganhador = 1;
-                    printf("O seguinte jogador ganhou com a cartela: \n", jogadores[k].nome);
+                    printf("O seguinte jogador ganhou com a cartela: \n");
                     printaCartela(k);
                     printf("Lista de numeros sorteados:\n");
                     ordenaLista(listaSorteados);
