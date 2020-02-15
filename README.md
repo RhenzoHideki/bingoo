@@ -8,7 +8,7 @@ raiz onde o programa foi salvo):
 Você pode escolher até 10 jogadores para jogar, após digitar a quantidade de
 jogadores você deve inserir o nome de cada jogador com no máximo 10 caracteres.
 
-O programa irá gerar as cartelas para cada jogador e começará a sortiar numeros e fará a verificação
+O programa irá gerar as cartelas para cada jogador e começará a sortear números e fará a verificação
 automaticamente, quando uma cartela for preenchida por completo será anunciado o vencedor, mostrando a
  cartela vencedora e os numeros sorteados.
  
