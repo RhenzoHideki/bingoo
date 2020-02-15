@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 
-#define MAX_NUM 9
-#define MAX_JOG 5
+#define MAX_NUM 16
 #define NUM_CARTELA 80
+#define MAX_JOG 10
 
 struct Usuario {
     char nome[10];
@@ -26,17 +27,17 @@ void ordenaLista(int aux[]) {       //Ordena listas
 }
 
 void printaCartela(int posJogador){   //Mostra cartelas
-    int count = 0;
+    float count = 0;
     printf("%s\n", jogadores[posJogador].nome);
     for (int i = 0; i < MAX_NUM ; i++) {
         count++;
         printf("%02d ", jogadores[posJogador].numeros[i]);
-        if (count == 3) {
+        if (count == sqrtf(MAX_NUM)) {
             printf("\n");
             count = 0;
         }
     }
-    printf("\n");
+    puts("");
 }
 
 int verificaRepSorteado(int numero, int listaSorteados[NUM_CARTELA]){  //Verifica repeticao de numero sorteado..
@@ -61,18 +62,31 @@ int main() {
     int numRndCartela;
     int numRndSorteado;
     int ganhador = 0;
-    strcpy(jogadores[0].nome, "André");
-    strcpy(jogadores[1].nome, "Luisa");
-    strcpy(jogadores[2].nome, "Bernardo");
-    strcpy(jogadores[3].nome, "Gabriel");
-    strcpy(jogadores[4].nome, "Nelsoninho");
+    int numJogadores=0;
+
+    while(1){                  // Entrada da quantidade de jogadores..
+        printf("Digite a quantidade de jogadores (máximo 10): ");
+        scanf("%d",&numJogadores);
+        if (numJogadores > 0 && numJogadores < 11)
+            break;
+    }
+
+    for (int i1 = 0; i1 < numJogadores ; ++i1) {  //Entrada dos nomes dos jogadores..
+        char nomeTemp[10];
+        printf("Insira o nome do %d jogador: ",i1+1);
+        scanf(" %[^\n]s", nomeTemp);
+        strcpy(jogadores[i1].nome, nomeTemp);
+    }
+    puts("");
 
     for (int m = 0; m < NUM_CARTELA ; ++m) {    //Inicia com 0 em todas posições da lista para não ter lixo no print...
         listaSorteados[m] = 0;
     }
     puts("Gerando cartelas.....");
 
-    for (int i = 0; i < MAX_JOG ; i++) {        // Gerador de cartelas...
+    puts("");
+
+    for (int i = 0; i < numJogadores ; i++) {        // Gerador de cartelas...
         for (int j = 0; j < MAX_NUM ; j++) {
             numRndCartela = rand() % NUM_CARTELA+1;
             if (verificaCartela(numRndCartela,i) == 1){
@@ -82,11 +96,11 @@ int main() {
             jogadores[i].numeros[j] = numRndCartela;
         }
     }
-    for (int n = 0; n < MAX_JOG ; ++n) {        //Ordenando cartela dos jogadores...
+    for (int n = 0; n < numJogadores ; ++n) {        //Ordenando cartela dos jogadores...
         ordenaLista(jogadores[n].numeros);
     }
 
-    for (int j = 0; j < MAX_JOG; j++) {         //Mostrando Cartelas
+    for (int j = 0; j < numJogadores; j++) {         //Mostrando Cartelas
         printaCartela(j);
     }
 
@@ -99,10 +113,10 @@ int main() {
                 continue;
             }
             listaSorteados[l] = numRndSorteado;
-            for (int k = 0; k < MAX_JOG; ++k) {       //Verificando se número sorteado está na cartela dos jogadores e adicionando pontos..
+            for (int k = 0; k < numJogadores; ++k) {       //Verificando se número sorteado está na cartela dos jogadores e adicionando pontos..
                 if (verificaCartela(numRndSorteado,k) == 1)
                     jogadores[k].pontos = jogadores[k].pontos + 1;
-                if (jogadores[k].pontos == 9){         //Se o jogador chegar a 9 pontos ele ganhou, mostra nome e cartela do vencedor
+                if (jogadores[k].pontos == MAX_NUM){         //Se o jogador chegar a 9 pontos ele ganhou, mostra nome e cartela do vencedor
                     ganhador = 1;
                     printf("O seguinte jogador ganhou com a cartela: \n", jogadores[k].nome);
                     printaCartela(k);
