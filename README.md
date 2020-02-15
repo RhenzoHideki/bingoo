@@ -1,5 +1,5 @@
 # Manual
-O jogo deve ser executado em sitemas operacionais com base em Linux.
+O jogo deve ser executado em sitemas operacionais Linux.
 Baixe o arquivo **bingoo** e utilizando o terminal inicie ele conforme o codigo a baixo (verifique que você está na 
 raiz onde o programa foi salvo):
 
