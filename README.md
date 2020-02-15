@@ -1,4 +1,4 @@
-#Manual
+# Manual
 O jogo deve ser executado em sitemas operacionais com base em Linux.
 Baixe o arquivo **bingoo** e utilizando o terminal inicie ele conforme o codigo a baixo (verifique que você está na 
 raiz onde o programa foi salvo):
@@ -12,7 +12,7 @@ O programa irá gerar as cartelas para cada jogador e começará a sortiar numer
 automaticamente, quando uma cartela for preenchida por completo será anunciado o vencedor, mostrando a
  cartela vencedora e os numeros sorteados.
  
-#Sobre o código
+# Sobre o código
 
 O programa consiste em gerar números aleatórios e salva-los em vetores formando assim as cartelas dos jogadores e também
 gerar a lista de numeros sorteados. A geração dos números é verificada por duas funções para que não haja repetição
