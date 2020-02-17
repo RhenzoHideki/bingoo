@@ -29,3 +29,8 @@ Para alterar a variedade de números que aparecem na cartela edite o valor do se
 
 Para alterar a quantidade maxima de jogadores edite o valor do seguinte define: 
 `#define MAX_JOG 10`.
+
+
+# Resolução
+
+Creio ter atendido todos os requisitos propostos.
